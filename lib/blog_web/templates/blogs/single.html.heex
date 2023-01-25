@@ -1,0 +1,21 @@
+<h1 style="text-decoration: underline;">Single Post Page</h1>
+
+<h3><%= @post.post_text%></h3>
+
+<%= form_for @changeset, Routes.blogs_path(@conn, :savecomment), fn f -> %>
+
+  <label>
+    Comment: <%= text_input f, :comment_text %>
+  </label>
+
+  
+
+  <%= submit "Submit" %>
+
+<% end %>
+
+<h4 style="text-decoration: underline;">Comments:</h4>
+<%= for comment <- @post.comments do%>
+<p><%= comment.comment_text %></p>
+<hr />
+<% end %>

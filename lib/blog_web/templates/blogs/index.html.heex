@@ -1,0 +1,12 @@
+
+<h1>Blogs</h1>
+
+
+<%= for post <- @posts do%>
+<div>
+    <h3><%= link("#{post.post_text}", to: "/blogs/#{post.id}", method: :get)  %></h3>
+    <span> created by <%= post.user.username %></span>
+    <hr>
+</div>
+
+<% end %>

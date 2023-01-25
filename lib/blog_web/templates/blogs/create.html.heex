@@ -1,0 +1,11 @@
+<%= form_for @changeset, Routes.blog_path(@conn, :create), fn f -> %>
+  <label>
+    Post Text: <%= text_input f, :post_text %>
+  </label>
+
+  <label>
+    Comment: <%= text_input f, :comment_text %>
+  </label>
+
+  <%= submit "Submit" %>
+<% end %>
