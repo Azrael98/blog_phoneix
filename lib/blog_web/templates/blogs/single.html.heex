@@ -5,10 +5,11 @@
 <%= form_for @changeset, Routes.blogs_path(@conn, :savecomment), fn f -> %>
 
   <label>
-    Comment: <%= text_input f, :comment_text %>
+   Add Comment: <%= text_input f, :comment_text %>
   </label>
 
-  
+  <%= hidden_input(f, :id ,value: @id)  %>
+
 
   <%= submit "Submit" %>
 

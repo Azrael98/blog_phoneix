@@ -26,12 +26,30 @@ defmodule BlogWeb.BlogsController do
     # IO.puts(conn)
     # IO.puts(params)
 
-    render(conn, "check.html", check: check)
-    # App.save(1, check)
-    # redirect(conn, to: "/blogs")
+    # render(conn, "check.html", check: check)
+    App.save(1, check)
+    redirect(conn, to: "/blogs")
   end
 
   def savecomment(conn, params) do
-    IO.puts(params)
+    data = params["comment"]
+
+    comment = data["comment_text"]
+    id = data["id"]
+
+    IO.puts(id)
+
+    IO.puts(comment)
+
+    post = App.single(id)
+
+    user = App.user(1)
+
+    saved = App.savecomment(comment, post, user)
+
+    changeset = Comment.changeset(%Comment{}, %{})
+
+    redirect(conn, to: "/blogs/#{id}")
+    # render(conn, "single.html", post: post, changeset: changeset, id: id)
   end
 end
