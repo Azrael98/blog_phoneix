@@ -3,6 +3,7 @@ defmodule Blog.Schemas.Post do
   import Ecto.Changeset
 
   schema "posts" do
+    field :post_title, :string
     field :post_text, :string
 
     has_many :comments, Blog.Schemas.Comment
@@ -13,7 +14,7 @@ defmodule Blog.Schemas.Post do
 
   def changeset(post, params \\ %{}) do
     post
-    |> cast(params, [:post_text])
+    |> cast(params, [:post_title, :post_text])
     |> validate_required([:post_text])
   end
 end

@@ -22,12 +22,13 @@ defmodule BlogWeb.BlogsController do
     render(conn, "create.html", changeset: changeset)
   end
 
-  def save(conn, %{"post" => check}) do
+  def save(conn, %{"post" => post}) do
     # IO.puts(conn)
     # IO.puts(params)
 
     # render(conn, "check.html", check: check)
-    App.save(1, check)
+    # IO.inspect(post)
+    App.save(1, post)
     redirect(conn, to: "/blogs")
   end
 

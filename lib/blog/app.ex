@@ -23,16 +23,14 @@ defmodule Blog.App do
     Repo.get(User, id)
   end
 
-  def save(id, data) do
+  def save(id, post) do
     user = Repo.get(User, id)
-    comment = data["comment"]
-    insertData = data["post_text"]
-    IO.puts(comment)
-    post = Repo.insert(%Post{post_text: insertData, user: user})
-    Repo.insert(%Comment{comment_text: comment, post: post, user: user})
+    text = post["post_text"]
+    title = post["post_title"]
+    Repo.insert(%Post{post_title: title, post_text: text, user: user})
   end
 
   def savecomment(comment, post, user) do
-    saved = Repo.insert(%Comment{comment_text: comment, post: post, user: user})
+    Repo.insert(%Comment{comment_text: comment, post: post, user: user})
   end
 end
