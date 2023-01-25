@@ -27,6 +27,10 @@ defmodule BlogWeb.Router do
 
     get "/write", BlogsController, :write
 
+    get "/edit/:id", BlogsController, :edit
+
+    post "/update", BlogsController, :update
+
     post "/save", BlogsController, :save
 
     post "/savecomment", BlogsController, :savecomment

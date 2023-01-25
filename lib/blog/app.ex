@@ -33,4 +33,16 @@ defmodule Blog.App do
   def savecomment(comment, post, user) do
     Repo.insert(%Comment{comment_text: comment, post: post, user: user})
   end
+
+  def delete_post(id) do
+    Post
+    |> Repo.get(id)
+    |> Repo.delete()
+  end
+
+  def update_post(id, title, text) do
+    post = Repo.get!(Post, id)
+    post = Ecto.Changeset.change(post, post_title: title, post_text: text)
+    Repo.update(post)
+  end
 end

@@ -53,4 +53,17 @@ defmodule BlogWeb.BlogsController do
     redirect(conn, to: "/blogs/#{id}")
     # render(conn, "single.html", post: post, changeset: changeset, id: id)
   end
+
+  def edit(conn, %{"id" => id}) do
+    IO.inspect(id)
+    post = App.single(id)
+    IO.inspect(post)
+    changeset = Post.changeset(%Post{}, %{})
+    render(conn, "update.html", id: id, post: post, changeset: changeset)
+  end
+
+  def update(conn, %{"post" => %{"id" => id, "text" => text, "title" => title}}) do
+    App.update_post(id, title, text)
+    redirect(conn, to: "/blogs")
+  end
 end

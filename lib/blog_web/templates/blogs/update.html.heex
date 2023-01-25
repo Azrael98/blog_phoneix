@@ -1,0 +1,7 @@
+<%= form_for @changeset, Routes.blogs_path(@conn, :update), fn f -> %>
+
+<h1>Post Title</h1>
+<label> <%= text_input f, :title, value: @post.post_title%> </label>
+<h1>Post Text</h1>
+<label> <%= textarea f, :text, value: @post.post_text%> </label>
+<%= submit "Submit" %> <%= hidden_input(f, :id ,value: @id) %> <% end %>
