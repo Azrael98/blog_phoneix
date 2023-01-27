@@ -40,11 +40,13 @@ defmodule Blog.App do
     |> Repo.delete()
   end
 
+  def delete_comment(id) do
+    Comment |> Repo.get(id) |> Repo.delete()
+  end
+
   def update_post(id, title, text) do
     post = Repo.get!(Post, id)
     post = Ecto.Changeset.change(post, post_title: title, post_text: text)
     Repo.update(post)
   end
 end
-
-

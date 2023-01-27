@@ -14,7 +14,11 @@
 
 <h4 style="text-decoration: underline">Comments:</h4>
 <%= for comment <- @post.comments do%>
-<p><%= comment.comment_text %></p>
+
+<div>
+    <p><%= comment.comment_text %></p>
+    <%= link("Delete", to: "/delete_comment/#{comment.id}") %>
+</div>
 <hr />
 <% end %>
 

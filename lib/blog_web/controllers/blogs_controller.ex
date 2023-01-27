@@ -71,4 +71,12 @@ defmodule BlogWeb.BlogsController do
     App.delete_post(id)
     redirect(conn, to: "/blogs")
   end
+
+  def delete_comment(conn, %{"id" => id}) do
+    post = App.delete_comment(id)
+    {:ok, post} = post
+    post_id = post.post_id
+    redirect(conn, to: "/blogs/#{post_id}")
+    # render(conn, "check.html", id: id)
+  end
 end

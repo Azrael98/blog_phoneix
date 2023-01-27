@@ -29,6 +29,8 @@ defmodule BlogWeb.Router do
 
     get "/delete/:id", BlogsController, :delete_post
 
+    get "delete_comment/:id", BlogsController, :delete_comment
+
     post "/update", BlogsController, :update
 
     post "/save", BlogsController, :save
