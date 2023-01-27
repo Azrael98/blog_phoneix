@@ -66,4 +66,9 @@ defmodule BlogWeb.BlogsController do
     App.update_post(id, title, text)
     redirect(conn, to: "/blogs")
   end
+
+  def delete_post(conn, %{"id" => id}) do
+    App.delete_post(id)
+    redirect(conn, to: "/blogs")
+  end
 end

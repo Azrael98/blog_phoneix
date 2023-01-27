@@ -1,22 +1,21 @@
-<h1 style="text-decoration: underline;"><%= @post.post_title%></h1>
+<h1 style="text-decoration: underline"><%= @post.post_title%></h1>
 
-<h3><%= @post.post_text%></h3>
+<div><%= link("Edit", to: "/edit/#{@id}") %>
+    <%= link("Delete", to: "/delete/#{@id}") %>
+</div>
+
+<h4><%= @post.post_text%></h4>
 
 <%= form_for @changeset, Routes.blogs_path(@conn, :savecomment), fn f -> %>
 
-  <label>
-   Add Comment: <%= text_input f, :comment_text %>
-  </label>
+<label> Add Comment: <%= text_input f, :comment_text %> </label>
 
-  <%= hidden_input(f, :id ,value: @id)  %>
+<%= hidden_input(f, :id ,value: @id) %> <%= submit "Submit" %> <% end %>
 
-
-  <%= submit "Submit" %>
-
-<% end %>
-
-<h4 style="text-decoration: underline;">Comments:</h4>
+<h4 style="text-decoration: underline">Comments:</h4>
 <%= for comment <- @post.comments do%>
 <p><%= comment.comment_text %></p>
 <hr />
 <% end %>
+
+

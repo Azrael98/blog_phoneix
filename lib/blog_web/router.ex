@@ -1,5 +1,4 @@
 defmodule BlogWeb.Router do
-  alias BlogWeb.BlogController
   use BlogWeb, :router
 
   pipeline :browser do
@@ -20,7 +19,6 @@ defmodule BlogWeb.Router do
 
     get "/", PageController, :index
 
-
     get "/blogs", BlogsController, :index
 
     get "/blogs/:id", BlogsController, :single
@@ -29,13 +27,13 @@ defmodule BlogWeb.Router do
 
     get "/edit/:id", BlogsController, :edit
 
+    get "/delete/:id", BlogsController, :delete_post
+
     post "/update", BlogsController, :update
 
     post "/save", BlogsController, :save
 
     post "/savecomment", BlogsController, :savecomment
-
-
   end
 
   # Other scopes may use custom stacks.
